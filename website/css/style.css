@@ -468,3 +468,21 @@ background: url("../images/intro1.jpg") center no-repeat;
 }
 
 
+#mintDiv{
+width: 100hw;
+	text-align: center;
+}
+
+
+#dropdownMintAmt{
+	border: solid;
+	border-color:rgba(235, 61, 61, 1);
+	border-radius: 12px;
+	font-size: 20px;
+}
+
+
+#mintBTN{
+
+	
+}

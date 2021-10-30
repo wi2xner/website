@@ -6,10 +6,10 @@
       <meta charset="utf-8" />
        <link rel=stylesheet href="css/style.css">
        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 	   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
 <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
 	   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
@@ -24,7 +24,9 @@
        <header class="header">
        <div class="container">
 		<div id="app">
-			<button id='loginButton' onclick="" class="btn-con">Connect</button></div>
+			<button id='loginButton' onclick="loginWithMetaMask()" class="btn-con">Connect</button>
+			
+			<button id='logoutButton' onclick="logoutMM()" class="btn-con">Disconnect</button></div>
 		   <div class="header__inner">
 			   <a class="header__logo" href="index.html"><img src="images/logobj2.png" class="header__logo"></a>
 			  
@@ -54,7 +56,10 @@
        <div class="intro">
        <div class="container"> 
 		   <div class="intro_inner"> 
-			  
+			   <div style="width: 100hw; text-align: center;">
+	<p id="loggedinwith" style="font-size: 20px;"></p>
+			   </div>
+		
 		   <h1 class="intro_title">Baby Trader Joe</h1>
 			    <h2 class="intro_text">A revolutionary token with huge auto rewards and hidden treasures</h2>
        </div><div class="intro_content"-w100>
@@ -79,18 +84,32 @@
 		    <div class="intro_btn">
  <a href="https://www.traderjoexyz.com/trade#/trade?outputCurrency=0xe703214808C3603a9dA2609d52bDcF920E0a0edf"
 			  target="_blank" class="btn_1">Buy Now</a>
-			  <a href="https://www.traderjoexyz.com/trade#/trade?outputCurrency=0xe703214808C3603a9dA2609d52bDcF920E0a0edf"
-			  target="_blank" class="btn_1" id="mintBTN">Mint NFT</a>
+			  
 <a href="https://nomics.com/assets/babytraderjoe-baby-trader-joe?quote=USD&utm_source=nomics-widget&utm_campaign=BABYTRADERJOE-USD&utm_medium=widget"
    target="_blank" class="btn_2">Live Chart</a>
 				<a href="https://twitter.com/BabyTraderJoe" class="Twitter"><img src="images/145812.png" 
 	alt="tw" width="45" height="45"																			 ></a>
 					<a href="https://t.me/TraderJoebaby" class="Telegram">
 						<img src="images/telegram.png" alt="tw" width="45" height="45"></a> 
-		   
-		   
-		   		</div>   
-
+		   </div>
+		   <div id="mintDiv">
+			   <br>
+			   <br>
+			<h2 class="intro_text">Mint</h2>
+				   <select id="dropdownMintAmt">
+					<option value=1>1</option>
+					<option value=2>2</option>
+					<option value=3>3</option>
+					<option value=4>4</option>
+					<option value=5>5</option>
+					<option value=6>6</option>
+					<option value=7>7</option>
+					<option value=8>8</option>
+					<option value=9>9</option>
+					<option value=10>10</option>
+					</select>
+				   <button class="btn_1" onclick="mintNFT()" style="width: 300px;">Mint NFT</button>
+				</div> 
 		   </div>
 		 
        </div>
@@ -219,14 +238,15 @@
     });
 
 	  </script>
-	  <script>
-	  import WalletConnectClient from "@walletconnect/client";
+	  <!-- <script>
+	//   import WalletConnectClient from "@walletconnect/client";
             
 const client = await WalletConnectClient.init({
   apiKey: "f99ce923be644e43871fb66396a57134",
 });
-</script>
+</script> -->
 	  
-     <script src="componnents/wallet/connectors.js"></script>
+     <!-- <script src="componnents/wallet/connectors.js"></script> -->
+	 <script type='text/javascript'  src="./main.js">  </script>
    </body>
 </html>
