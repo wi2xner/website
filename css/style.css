@@ -77,14 +77,10 @@ margin: 0
 
 .intro_content{
 	display: flex;
- 
-	width: 904px;
 	margin-top: 120px;
-	overflow: auto;
-	float:left;
 	position: absolute;
-	right: 50%;
-	left:36%;
+	height: 200px;
+	left:45%;
 	transform: translate(-50%, -50%);	
 	
 	
@@ -151,9 +147,10 @@ display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
 	 padding: 12px;
-	margin-top: 280px;
-	margin-left: 280px;
+	margin-top: 320px;
+	margin-left: 220px;
 	font-family: 'Poppins', bold;
+	position: relative;
 }
 
 .btn_1 {
@@ -193,10 +190,38 @@ display: flex;
 }
 .btn_1:hover {color:#ffa500}
 .btn_2:hover {color:#ffa500}
+
+.div_vid{
+	display: block;
+	position: fixed;
+	right: 0;
+	margin-left: 50%;
+}
 .NFT_vid {
-	float: right;
-	margin-right: 300px;
 	
+	margin-left: 40px;
+	
+	
+	 
+	
+	
+}
+.btn_nft {
+	display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+    font-weight: bold;
+    padding: 10px 10px;
+    font-size: 17px;
+    color: #000;
+    text-decoration: none;
+    transition: color .2s linear;
+	font-weight: 700;
+		background-color: #ffc107;
+    border-color: #eb3d3d;
+	border-radius: 10px;
+	margin-right: 2px!important;
+	width: 50px;
 }
 
 
