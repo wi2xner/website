@@ -193,6 +193,11 @@ display: flex;
 }
 .btn_1:hover {color:#ffa500}
 .btn_2:hover {color:#ffa500}
+.NFT_vid {
+	float: right;
+	margin-right: 300px;
+	
+}
 
 
 /*header*/

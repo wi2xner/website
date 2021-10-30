@@ -94,6 +94,7 @@ function toggleButton() {
 	showElement(connectBTN);
 	hideElement(discconnectBTN);
 	loggedinAdd.innerText = '';
+	hideElement(loggedinAdd);
    }
 
 
@@ -101,10 +102,10 @@ function toggleButton() {
 	var mintAMT = document.getElementById('dropdownMintAmt');
 	var mintSoMuch = mintAMT.options[mintAMT.selectedIndex].value;
 var payforMInt = mintSoMuch*2*1000000000000000000;
-//console.log("Minting NFT");
-//console.log(myContract);
-//console.log(mintSoMuch);
-//console.log(payforMInt);
+console.log("Minting NFT");
+console.log(myContract);
+console.log(mintSoMuch);
+console.log(payforMInt);
 if(userWalletAddress == null || userWalletAddress == undefined || userWalletAddress == ""){
 	alert("Please Connect Wallet first");
 }else{
