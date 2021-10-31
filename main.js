@@ -1,7 +1,5 @@
 
-if (typeof window.ethereum !== 'undefined') {
-	console.log('MetaMask is installed!');
-  }
+
 
 
 hideElement = (element) => element.style.display = "none";
@@ -105,8 +103,8 @@ function toggleButton() {
 	window.userWalletAddress =null;
 	showElement(connectBTN);
 	hideElement(discconnectBTN);
+	hideElement(loggedinAdd);
 	loggedinAdd.innerText = '';
-	hideElement(loggedinAdd)
    }
 
 
