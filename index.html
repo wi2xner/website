@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
 <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 	   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
-       <script src="https://cdn.jsdelivr.net/npm/web3@3.0.0-rc.5/dist/web3.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
        
 
  
@@ -96,7 +96,7 @@
 		 <option value=9>9</option>
 		 <option value=10>10</option>
 		 </select>
-		<button class="btn_nft" onclick="mintNFT1()" style="width: 250px;">Mint NFT</button>
+		<button class="btn_nft" onclick="mintNFT()" style="width: 250px;">Mint NFT</button>
 	 </div> 
 	 <img preload="auto" loop autoplay src = "images/NFT_vid.gif" width="270" height="270" class= "NFT_vid" ></img>
 </div>
@@ -192,7 +192,65 @@
 		   
 	   </div>
 	   
+	  <script>
+		  window.userWalletAddress = null
+    const loginButton = document.getElementById('loginButton')
+    const userWallet = document.getElementById('userWallet')
 
+    function toggleButton() {
+      if (!window.ethereum) {
+        loginButton.innerText = 'MetaMask is not installed'
+        loginButton.classList.remove('bg-purple-500', 'text-white')
+        loginButton.classList.add('bg-gray-500', 'text-gray-100', 'cursor-not-allowed')
+        return false
+      }
+
+      loginButton.addEventListener('click', Connected)
+    }
+
+    async function Connected() {
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+        .catch((e) => {
+          console.error(e.message)
+          return
+        })
+      if (!accounts) { return }
+
+      window.userWalletAddress = accounts[0]
+      userWallet.innerText = window.userWalletAddress
+      loginButton.innerText = ''
+
+      loginButton.removeEventListener('click', Connected)
+      setTimeout(() => {
+        loginButton.addEventListener('click', Disconnect)
+      }, 200)
+    }
+
+    function Disconnect() {
+      window.userWalletAddress = null
+      userWallet.innerText = ''
+      loginButton.innerText = 'Connect'
+
+      loginButton.removeEventListener('click', Disconnect)
+      setTimeout(() => {
+        loginButton.addEventListener('click', Connected)
+      }, 200)
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      toggleButton()
+    });
+
+	  </script>
+	  <!-- <script>
+	//   import WalletConnectClient from "@walletconnect/client";
+            
+const client = await WalletConnectClient.init({
+  apiKey: "f99ce923be644e43871fb66396a57134",
+});
+</script> -->
+	  
+     <!-- <script src="componnents/wallet/connectors.js"></script> -->
 	<script type='text/javascript'  src="./main.js">  </script> 
 	 
    </body>
