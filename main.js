@@ -1,7 +1,5 @@
 
 
-
-
 hideElement = (element) => element.style.display = "none";
 showElement = (element) => element.style.display = "block";
 
@@ -15,36 +13,7 @@ const CONTRACT_ABI = [{"type":"constructor","stateMutability":"nonpayable","inpu
 const CONTRACT_ADDRES = "0x78A804e1C8d46dc194124d5BDC348234fcB0D782";
 
 
-// const data = [{
-//	chainId: '43113',
-//	chainName: 'Avalanche Testnet C-Chain',
-//	nativeCurrency:
-//		{
-//			name: 'Avalanche',
-//			symbol: 'BAVAX',
-//			decimals: 18
-//		},
-//	rpcUrls: ['https://api.avax-test.network/ext/bc/C/rpc'],
-//	blockExplorerUrls: ['https://cchain.explorer.avax-test.network/'],
-//}]
-
-var web3 = new Web3("https://api.avax-test.network/ext/bc/C/rpc");
-var web3 = new Web3(Web3.givenProvider || ('ws://api.avax-test.network/ext/bc/C/rpc'));
-
-const ethEnabled = () => {
-	if (window.web3) {
-	  window.web3 = new Web3(window.web3.currentProvider);
-	  window.ethereum.enable();
-	  return true;
-	}
-	return false;
-  };
-	if (!ethEnabled()) {
-	  alert("Please install MetaMask to use this dApp!");
-	};
-	
-
-	
+window.web3 = new Web3(Web3.givenProvider || "ws://127.0.0.1:5500");
 var myContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRES, {
     from: window.userWalletAddress // default from address
     // gasPrice: '30000000000' // default gas price in wei, 20 gwei in this case
@@ -60,8 +29,11 @@ hideElement(loggedinAdd);
 
 
 
-//initialize we3
+//initialize web3
 function toggleButton() {
+	if (typeof window.ethereum !== 'undefined') {
+		console.log('MetaMask is installed!');
+	  }
 	if (!window.ethereum) {
 		loginButton.innerText = 'MetaMask is not installed'
 		loginButton.classList.remove('bg-purple-500', 'text-white')
@@ -72,7 +44,7 @@ function toggleButton() {
 	
 	loginButton.addEventListener('click', loginWithMetaMask)
   }
-
+  
 
   async function loginWithMetaMask() {
 	window.accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
