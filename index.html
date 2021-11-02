@@ -11,7 +11,6 @@
 	   <link rel="preconnect" href="https://fonts.googleapis.com">
 <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
 <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
-<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 	   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
        
@@ -25,13 +24,9 @@
        <header class="header">
        <div class="container">
 		<div id="app">
-			
 			<button id='loginButton' onclick="loginWithMetaMask()" class="btn-con">Connect</button>
 			
 			<button id='logoutButton' onclick="logoutMM()" class="btn-con">Disconnect</button></div>
-			<div>
-				<p id="loggedinwith" class="login-text"></p>
-			</div>
 		   <div class="header__inner">
 			   <a class="header__logo" href="index.html"><img src="images/logobj2.png" class="header__logo"></a>
 			  
@@ -43,7 +38,7 @@
 				   
       
     
-    
+    <p id='userWallet' class='text-lg text-gray-600 my-2'></p>
 				   
 				   
 				   
@@ -62,7 +57,7 @@
        <div class="container"> 
 		   <div class="intro_inner"> 
 			   <div style="width: 100hw; text-align: center;">
-	
+	<p id="loggedinwith" style="font-size: 20px;"></p>
 			   </div>
 		
 		   <h1 class="intro_title">Baby Trader Joe</h1>
@@ -70,51 +65,52 @@
        </div><div class="intro_content"-w100>
 		   <div class="intro_logo"> 
 			   <img src="images/logo.png" class="logo_content">
-		   </div> 
+		   </div>
 		   <div class="intro_contract"><strong>Contract Address</strong> 
 			  <div class="contract" onclick="CopyToClipboard('copy')" id="copy">0xe703214808C3603a9dA2609d52bDcF920E0a0edf</div>
 			  
-</div> 
-<div id="mintDiv">
-	
-	
- <h2 class="intro_text">Mint NFT</h2>
-
- 
- 
- 
- <br>
-		<select id="dropdownMintAmt" class="selector">
-		 <option value=1>1</option>
-		 <option value=2>2</option>
-		 <option value=3>3</option>
-		 <option value=4>4</option>
-		 <option value=5>5</option>
-		 <option value=6>6</option>
-		 <option value=7>7</option>
-		 <option value=8>8</option>
-		 <option value=9>9</option>
-		 <option value=10>10</option>
-		 </select>
-		<button class="btn_nft" onclick="mintNFT()" style="width: 250px;">Mint NFT</button>
-	 </div> 
-	 <img preload="auto" loop autoplay src = "images/NFT_vid.gif" width="270" height="270" class= "NFT_vid" ></img>
 </div>
+	 <div class="intro_text1">
+		   <p>Avalanche Network</p>
 
+            <p>Community Valued Utility Token</p>
+
+             <p>HODL $BJOE and earn $JOE</p>
+		   
+		   </div>
+			   </div>
 			  
 		   
 		    <div class="intro_btn">
- <a href="https://traderjoexyz.com/#/trade?outputCurrency=0xe703214808C3603a9dA2609d52bDcF920E0a0edf"
+ <a href="https://www.traderjoexyz.com/trade#/trade?outputCurrency=0xe703214808C3603a9dA2609d52bDcF920E0a0edf"
 			  target="_blank" class="btn_1">Buy Now</a>
 			  
 <a href="https://nomics.com/assets/babytraderjoe-baby-trader-joe?quote=USD&utm_source=nomics-widget&utm_campaign=BABYTRADERJOE-USD&utm_medium=widget"
    target="_blank" class="btn_2">Live Chart</a>
 				<a href="https://twitter.com/BabyTraderJoe" class="Twitter"><img src="images/145812.png" 
 	alt="tw" width="45" height="45"																			 ></a>
-					<a href="https://t.me/TraderJoebaby_Chat" class="Telegram">
+					<a href="https://t.me/TraderJoebaby" class="Telegram">
 						<img src="images/telegram.png" alt="tw" width="45" height="45"></a> 
 		   </div>
-		   
+		   <div id="mintDiv">
+			   <br>
+			   <br>
+			<h2 class="intro_text">Mint</h2>
+				   <select id="dropdownMintAmt">
+					<option value=1>1</option>
+					<option value=2>2</option>
+					<option value=3>3</option>
+					<option value=4>4</option>
+					<option value=5>5</option>
+					<option value=6>6</option>
+					<option value=7>7</option>
+					<option value=8>8</option>
+					<option value=9>9</option>
+					<option value=10>10</option>
+					</select>
+				   <button class="btn_1" onclick="mintNFT()" style="width: 300px;">Mint NFT</button>
+				</div> 
+		   </div>
 		 
        </div>
 	   <div class="container-2">	
@@ -126,8 +122,8 @@
 		 </div>
 <div class="right">
 		     <h1 class="tittle_ab">About us</h1>
-	<b class="text">Аt Baby Trader Joe, our team made a great effort to improve the tokenomics to a higher level. You'll be shocked by the powerful blows of the rewards you get to your wallet. In our first project, we made profit x35 from the presale price. Every holder has received good rewards. The NFT collection was sold out. And we served several giveaways for our comunity. The contract and tokenomics are working well.
-	</b>
+	<p class="text">Аt Baby Trader Joe, our team made a great effort to improve the tokenomics to a higher level. You'll be shocked by the powerful blows of the rewards you get to your wallet. In our first project, we made profit x35 from the presale price. Every holder has received good rewards. The NFT collection was sold out. And we served several giveaways for our comunity. The contract and tokenomics are working well.
+	</p>
 	<p class="text"></p>
 	   
 		</div>
@@ -192,7 +188,7 @@
 		   
 	   </div>
 	   
-	  <script>
+	  <!-- <script>
 		  window.userWalletAddress = null
     const loginButton = document.getElementById('loginButton')
     const userWallet = document.getElementById('userWallet')
@@ -218,7 +214,7 @@
 
       window.userWalletAddress = accounts[0]
       userWallet.innerText = window.userWalletAddress
-      loginButton.innerText = ''
+      loginButton.innerText = 'Disconnect'
 
       loginButton.removeEventListener('click', Connected)
       setTimeout(() => {
@@ -241,7 +237,7 @@
       toggleButton()
     });
 
-	  </script>
+	  </script> -->
 	  <!-- <script>
 	//   import WalletConnectClient from "@walletconnect/client";
             
@@ -251,7 +247,6 @@ const client = await WalletConnectClient.init({
 </script> -->
 	  
      <!-- <script src="componnents/wallet/connectors.js"></script> -->
-	<script type='text/javascript'  src="./main.js">  </script> 
-	 
+	 <script type='text/javascript'  src="./main.js">  </script>
    </body>
 </html>

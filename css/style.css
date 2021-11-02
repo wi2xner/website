@@ -64,25 +64,28 @@ margin: 0
 }
 
 .intro_text {
-	font-size: 30px;
+	font-size: calc(1.375rem + 1.5vw);
 	margin-top: 0;
     margin-bottom: .5rem;
     font-weight: 500;
     line-height: 1.2;
 	color:rgba(235, 61, 61, 1);
 	text-align: center;
-	font-family: 'Lilita One', cursive;
+	font-family: 'Poppins', sans-serif;
 	justify-content: center;
 }
 
 .intro_content{
 	display: flex;
-	margin-top: 120px;
+ 
+	width: 904px;
+	margin-top: 150px;
+	overflow: auto;
+	float:none;
 	position: absolute;
-	height: 200px;
-	left:45%;
-	transform: translate(-50%, -50%);	
-	
+	right: 50%;
+	left:50%;
+	transform: translate(-50%, -50%);
 	
 }
 .logo_content{
@@ -147,10 +150,9 @@ display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
 	 padding: 12px;
-	margin-top: 320px;
-	margin-left: 220px;
+	margin-top: 280px;
+	margin-left: 280px;
 	font-family: 'Poppins', bold;
-	position: relative;
 }
 
 .btn_1 {
@@ -169,7 +171,7 @@ display: flex;
 	border-radius: 10px;
 	margin-right: 2px!important;
 	vertical-align: 
-        }
+}
 
 .btn_2 {
 	    display: inline-block;
@@ -191,39 +193,6 @@ display: flex;
 .btn_1:hover {color:#ffa500}
 .btn_2:hover {color:#ffa500}
 
-.div_vid{
-	display: block;
-	position: fixed;
-	right: 0;
-	margin-left: 50%;
-}
-.NFT_vid {
-	
-	margin-left: 40px;
-	
-	
-	 
-	
-	
-}
-.btn_nft {
-	display: inline-block;
-    vertical-align: top;
-    margin: 5px;
-    font-weight: bold;
-    padding: 10px 10px;
-    font-size: 17px;
-    color: #000;
-    text-decoration: none;
-    transition: color .2s linear;
-	font-weight: 700;
-		background-color: #ffc107;
-    border-color: #eb3d3d;
-	border-radius: 10px;
-	margin-right: 2px!important;
-	width: 50px;
-}
-
 
 /*header*/
 
@@ -243,28 +212,6 @@ display: flex;
 	padding: 5px;
  margin-top:18px;
 	float:right;
-	background-color: #ffc107;
-	border-radius: 10px;
-	font-size: 17px;
-	color: #000;
-	font-weight: bold;
-	border-color: #eb3d3d;
-	
-}
-.btn-con:hover {color:#ffa500}
-.login-text {
-	overflow: hidden;
-	float:right;
-	margin-top: 20px;
-	margin-right: 50px;
-	text-align: center;
-	text-overflow: ellipsis;
-	width: 150px;
-	background-color: #ffc107;
-	border-radius: 10px;
-	padding: 3px;
-	color: #000;
-	border-color: #eb3d3d;
 }
 .header__inner{
 	display: flex;
@@ -336,18 +283,12 @@ background: url("../images/intro1.jpg") center no-repeat;
 	width:50%; 
 	height: 100%;
 	float:right;
-	
 }
-.selector {
-	margin-bottom: 20px;
-}
-	
-
 .text {
 	color:rgba(235, 61, 61, 1);
 	font-size: 17px;
 	line-height: 2;
-	font-family: 'Poppins', sans-serif;
+	font-family: cursive;
 	text-align: center;
 }
 .tittle_ab {
