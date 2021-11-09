@@ -532,15 +532,19 @@ init = () => {
     window.ethereum.on("chainChanged", function (networkId) {
       const newNetwork = parseInt(networkId);
       console.log("Network has changed!!!!", newNetwork);
-      if (newNetwork !== 43114) {
-        alert("Please Switch to Avalanche Mainnet C-Chain!");
+      if (newNetwork !== 0xA86A) {
+        alert("Please Switch to Avalanche Network!");
         ethereum.request({
           method: "wallet_switchEthereumChain",
-          params: [{ chainId: Web3.utils.toHex(43114) }],
+          params: [{ chainId: Web3.utils.toHex(0xA86A) }],
         });
       }
     });
   }
+
+  window.web3.ens.resolver('avarabbit.xyz').then(function (contract) {
+    console.log(contract);
+});
 };
 
 
@@ -561,17 +565,17 @@ async function loginWithMetaMask() {
   console.log("func:::::: loginWithMetaMask()...");
   await web3.eth.getChainId();
 
-  if (await web3.eth.getChainId() !== 43114) {alert("Please Switch to Avalanche Mainnet C-Chain or add do it manually from your wallet menu");
+  if (await web3.eth.getChainId() !== 0xA86A) {alert("Please Switch to Avalanche Network or add do it manually from your wallet menu");
     console.log("suggesing now...");
 	window.ethereum.on("chainChanged", function () {
-	  if (networkID === 43114) {
+	  if (networkID === 0xA86A) {
 	    loginWithMetaMask();
 	  };
     });
   
-	const AVALANCHE_MAINNET_PARAMS = {
+	const AVALANCHE_NETWORK = {
 			chainId: "0xA86A",
-			chainName: "Avalanche Mainnet C-Chain",
+			chainName: "Avalanche Network",
 			nativeCurrency: {
 				name: "Avalanche",
 				symbol: "AVAX",
@@ -582,7 +586,7 @@ async function loginWithMetaMask() {
 	};
 	ethereum.request({
 	  method: 'wallet_addEthereumChain',
-	  params: [AVALANCHE_MAINNET_PARAMS],
+	  params: [AVALANCHE_NETWORK],
 	});
 
 } if (window.ethereum) {
@@ -629,7 +633,7 @@ async function logoutMM() {
 }
 
 function checks() {
-  if (window.id == 43114) {
+  if (window.id == 0xA86A) {
     callback();
     window.id = 0;
   } else {
@@ -677,19 +681,19 @@ async function mintNFT() {
 	userWalletAddress == ""
   ) {
 	alert("Please connect to MetaMask.");
-} if (await web3.eth.getChainId() !== 43114) {
-      alert("Please Switch to Avalanche Mainnet C-Chain or add do it manually from your wallet menu");
+} if (await web3.eth.getChainId() !== 0xA86A) {
+      alert("Please Switch to Avalanche Network or add do it manually from your wallet menu");
     console.log("suggesing now...");
   
     window.ethereum.on("chainChanged", function () {
-	  if (networkID === 43114) {
+	  if (networkID === 0xA86A) {
 	    mintNFTexecution();
       }
     });
 
 	ethereum.request({
 	  method: "wallet_switchEthereumChain",
-	  params: [{ chainId: Web3.utils.toHex(43114) }],
+	  params: [{ chainId: Web3.utils.toHex(0xA86A) }],
 	});
 	window.id = "";
   } else {
