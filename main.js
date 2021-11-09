@@ -527,6 +527,20 @@ init = () => {
   hideElement(discconnectBTN);
   hideElement(loggedinAdd);
   window.userWalletAddress = null;
+
+  if (window.ethereum) {
+    window.ethereum.on("chainChanged", function (networkId) {
+      const newNetwork = parseInt(networkId);
+      console.log("Network has changed!!!!", newNetwork);
+      if (newNetwork !== 43114) {
+        alert("Please Switch to Avalanche Mainnet C-Chain!");
+        ethereum.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: Web3.utils.toHex(43114) }],
+        });
+      }
+    });
+  }
 };
 
 
