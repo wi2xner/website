@@ -527,10 +527,10 @@ init = () => {
   hideElement(discconnectBTN);
   hideElement(loggedinAdd);
   window.userWalletAddress = null;
-
-  if (window.ethereum) {
-    window.ethereum.on("chainChanged", function (networkId) {
-      const newNetwork = parseInt(networkId);
+  
+ /* if (window.ethereum) {
+    window.ethereum.on("chainChanged", function (networkID) {
+      const newNetwork = parseInt(networkID);
       console.log("Network has changed!!!!", newNetwork);
       if (newNetwork !== 0xA86A) {
         alert("Please Switch to Avalanche Network!");
@@ -540,11 +540,7 @@ init = () => {
         });
       }
     });
-  }
-
-  window.web3.ens.resolver('avarabbit.xyz').then(function (contract) {
-    console.log(contract);
-});
+  }*/
 };
 
 
@@ -568,11 +564,12 @@ async function loginWithMetaMask() {
   if (await web3.eth.getChainId() !== 0xA86A) {alert("Please Switch to Avalanche Network or add do it manually from your wallet menu");
     console.log("suggesing now...");
 	window.ethereum.on("chainChanged", function () {
-	  if (networkID === 0xA86A) {
+	  if (chainId === 0xA86A) {
 	    loginWithMetaMask();
 	  };
-    });
-  
+    },
+	);
+	
 	const AVALANCHE_NETWORK = {
 			chainId: "0xA86A",
 			chainName: "Avalanche Network",
@@ -588,6 +585,7 @@ async function loginWithMetaMask() {
 	  method: 'wallet_addEthereumChain',
 	  params: [AVALANCHE_NETWORK],
 	});
+	window.location.reload();
 
 } if (window.ethereum) {
     window.accounts = await window.ethereum
@@ -603,7 +601,7 @@ async function loginWithMetaMask() {
   
       return;
     }
-  
+
     window.userWalletAddress = accounts[0];
   
     loginButton.removeEventListener("click", loginWithMetaMask);
@@ -633,12 +631,12 @@ async function logoutMM() {
 }
 
 function checks() {
-  if (window.id == 0xA86A) {
+  if (chainId === 0xA86A) {
     callback();
-    window.id = 0;
+    chainId = "";
   } else {
     localStorage.clear();
-	window.id = 0;
+	chainId = "";
 	web3.eth.getChainId();
   }
 }
@@ -664,12 +662,12 @@ async function mintNFTexecution() {
   ) {
 	// alert("Please connect to MetaMask.");
   } else {
-	window.id = "";
+	chainId = "";
 	myContract.methods
 	  .mint(mintSoMuch)
 	  .send({ from: userWalletAddress, value: payforMInt });
   }
-  window.id = "";
+  chainId = "";
 }
 
 async function mintNFT() {
@@ -686,7 +684,7 @@ async function mintNFT() {
     console.log("suggesing now...");
   
     window.ethereum.on("chainChanged", function () {
-	  if (networkID === 0xA86A) {
+	  if (chainId === 0xA86A) {
 	    mintNFTexecution();
       }
     });
@@ -695,11 +693,11 @@ async function mintNFT() {
 	  method: "wallet_switchEthereumChain",
 	  params: [{ chainId: Web3.utils.toHex(0xA86A) }],
 	});
-	window.id = "";
+	chainId = "";
   } else {
     mintNFTexecution();
 }
-  window.id = "";
+  chainId = "";
 }
 
 init();
