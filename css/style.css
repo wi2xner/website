@@ -1,15 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+html {
+	background: url("/images/img1.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
 body { 
     margin: 0;
 font-family: 'Poppins', sans-serif;
     font-size: 15px;
     line-height: 1.6;
     color: #333;
-	 background-image: url('../images/intro.jpg');
+	 background-image;
   background-repeat: no-repeat;
   height: 100%;
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
+  
+  background-size: 100%;
 }
 *,
 *:before,
@@ -35,8 +46,8 @@ margin: 0
 	background-repeat: no-repeat;
   background-position: center;
     width: 100%;
-    height: 100vh;
-    background: url("../images/intro1.jpg") center no-repeat;
+    height: 100%;
+    background:  center no-repeat;
     -webkit- background-size: 100%;	
         background-size: 100%;
 	
@@ -48,7 +59,7 @@ margin: 0
 	margin: 0 auto;
 	flex-direction: column;
 	justify-content: center;
-    margin-top:15px;
+    margin-top:100px;
  	
 }
 
@@ -59,33 +70,34 @@ margin: 0
 	font-weight: bold;
 	margin: 0;
 	padding-top: 0;
-	color:rgba(235, 61, 61, 1);
+	color:rgb(255, 255, 255);
 	text-align: center;
+	
 }
 
 .intro_text {
-	font-size: calc(1.375rem + 1.5vw);
-	margin-top: 0;
-    margin-bottom: .5rem;
+	font-size: 30px;
+	margin-top: -90px;
+    margin-left: -100px;
     font-weight: 500;
     line-height: 1.2;
-	color:rgba(235, 61, 61, 1);
+	color:rgb(255, 255, 255);
 	text-align: center;
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Lilita One', cursive;
 	justify-content: center;
 }
 
+
 .intro_content{
-	display: flex;
- 
-	width: 904px;
-	margin-top: 150px;
-	overflow: auto;
-	float:none;
-	position: absolute;
-	right: 50%;
-	left:50%;
+	display: grid;
+	margin-top: 40px;
+	position: relative;
+	height: 200px;
+	left:45%;
 	transform: translate(-50%, -50%);
+	justify-items: center;
+	margin-left: 33px;	
+	
 	
 }
 .logo_content{
@@ -120,13 +132,50 @@ margin: 0
 	
 
 }
-.contract{
-	font-size: 15px;
-	text-align: center;
+.int_nft{
+    float: left;
+	width: 25%;
+    
 	justify-content: center;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+	margin-top: -300px;
+	
+	background-color: #eb3d3d;
+	opacity: 0.9;
+	text-align: center;
+	border-radius: 15px;
+
+}
+.int_nft1{
+	float: right;
+	
+	width: 25%;
+	justify-content: center;
+	text-align: center;
+	
+	margin-top: -270px;
+	margin-right: 50px;
+	
+	
+}
+
+.text_nft{
+	color: #fff;
+	font-size: 30px;
+	font-family: 'Righteous', cursive;	
+
+}
+.gif {
+	margin-top: -100px;
+	margin-left: 50px;
+}
+.bold{
+	font-weight: bold;
+	text-decoration: underline;
+
+	
+}
+	
+
 }
 .intro_text1 {
 	flex: 1;
@@ -143,16 +192,17 @@ margin: 0
 	}
 .intro_btn {
 display: flex;
-	width: 664px;
-	height: 64px;
+	
 	justify-content: space-evenly;
     align-items: flex-end;
     flex-wrap: nowrap;
     flex-direction: row;
 	 padding: 12px;
-	margin-top: 280px;
-	margin-left: 280px;
+	margin-top: 20px;
+	margin-right: 160px;
+	
 	font-family: 'Poppins', bold;
+	position: relative;
 }
 
 .btn_1 {
@@ -160,47 +210,93 @@ display: flex;
     vertical-align: top;
     margin: 5px;
     font-weight: bold;
-    padding: 10px 10px;
+    padding: 14px 40px;
     font-size: 17px;
     color: #000;
     text-decoration: none;
     transition: color .2s linear;
 	font-weight: 700;
-		background-color: #ffc107;
+	background: linear-gradient(90deg, rgba(255,190,8,0.8631827731092436) 0%, rgba(254,255,0,0.8715861344537815) 100%);
     border-color: #eb3d3d;
 	border-radius: 10px;
 	margin-right: 2px!important;
-	vertical-align: 
-}
+	margin-left: 150px;
+        }
 
 .btn_2 {
 	    display: inline-block;
     vertical-align: top;
     margin: 5px;
     font-weight: bold;
-    padding: 10px 10px;
+    padding: 14px 40px;
     font-size: 17px;
     color: #000;
     text-decoration: none;
     transition: color .2s linear;
 	font-weight: 700;
-		background-color: #ffc107;
+    background: linear-gradient(90deg, rgba(255,190,8,0.8631827731092436) 0%, rgba(254,255,0,0.8715861344537815) 100%);
     border-color: #eb3d3d;
 	border-radius: 10px;
+	margin-right: 150px;
 	margin-right: 2px!important;
 	
 }
 .btn_1:hover {color:#ffa500}
 .btn_2:hover {color:#ffa500}
 
+.div_vid{
+	display: block;
+	position: fixed;
+	right: 0;
+	margin-left: 50%;
+}
+.NFT_vid {
+	
+	margin-left: 40px;
+	
+	
+}
+.intro_NFT{font-family: 'Lilita One', cursive;
+	font-size: 65px;
+	font-weight: bold;
+	margin: 0;
+	padding-top: 0;
+	color:#ffa500;
+	text-align: center;
+	margin-left: 35px;
+	margin-top: -60px;
+	
+
+}
+.btn_nft {
+	display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+    font-weight: bold;
+    padding: 10px 10px;
+    font-size: 17px;
+    color: rgb(1, 2, 1);
+    text-decoration: none;
+    transition: color .2s linear;
+	font-weight: 700;
+	background: linear-gradient(90deg, rgba(255,190,8,0.8631827731092436) 0%, rgba(254,255,0,0.8715861344537815) 100%);
+    
+	border-radius: 10px;
+	margin-right: 2px!important;
+	width: 50px;
+	margin-left: 45px
+}
+.btn_nft:hover{color:#ffa500
+}
+
 
 /*header*/
 
 .header {
 	width: 100%;
-	background: rgba(235, 61, 61, 1);
+	background: 
 	margin: 0 auto;
-	position: static;
+	position: fixed;
 	top:0;
 	left: 0;
 	right: 0;
@@ -209,9 +305,31 @@ display: flex;
 }
 
 .btn-con{
-	padding: 5px;
+	padding: 8px;
  margin-top:18px;
 	float:right;
+	background: #291d45;
+	border-radius: 10px;
+	font-size: 15px;
+	color: rgb(226, 226, 226);
+	font-weight: bold;
+	border-color: #8e7497
+	
+}
+.btn-con:hover {color:#ffc107}
+.login-text {
+	overflow: hidden;
+	float:right;
+	margin-top: 20px;
+	margin-right: 50px;
+	text-align: center;
+	text-overflow: ellipsis;
+	width: 150px;
+	background-color: #291d4566;
+	border-radius: 10px;
+	padding: 3px;
+	color: rgb(255, 255, 255);
+	border-color: #eb3d3d;
 }
 .header__inner{
 	display: flex;
@@ -261,16 +379,20 @@ display: flex;
     margin: 0 auto;
 	position: relative;
 	height: 500px;
-background: url("../images/intro1.jpg") center no-repeat;
+	margin-top: 220px;
+background: url center no-repeat;
     -webkit- background-size: cover;
-        background-size: cover;}
+        background-size: cover;
+}
+		
 
 	
 .abouts_us {
 	display: flex;
     width: 100%;
     height: 300px;
-	padding: 90px;
+	
+	flex-direction: column;
 	
     
 }
@@ -283,13 +405,39 @@ background: url("../images/intro1.jpg") center no-repeat;
 	width:50%; 
 	height: 100%;
 	float:right;
+	
 }
+.selector {
+	margin-bottom: 20px;
+	margin-left: 35px;
+	
+}
+	
+
 .text {
 	color:rgba(235, 61, 61, 1);
-	font-size: 17px;
+	font-size: 20px;
 	line-height: 2;
-	font-family: cursive;
+	font-family: 'Poppins', sans-serif;
 	text-align: center;
+	margin-right: -100px;
+
+}
+.text12 {
+	
+	
+	background: #fff;
+	font-size: 30px;
+	font-family: 'Righteous', cursive;
+	-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+	text-align: center;
+	margin-top: -90px;
+	
+  
+ 
+	
+	
 }
 .tittle_ab {
 	font-family: 'Lilita One', cursive;
@@ -299,38 +447,32 @@ background: url("../images/intro1.jpg") center no-repeat;
 	padding-top: 0;
 	color:rgba(235, 61, 61, 1);
 	text-align: center;
+	justify-content: center;
+	
 }
 .container-3{
-	width: 100%;
+	width: 665px;
     max-width: 1520;
     margin: 0 auto;
 	position: relative;
-	height: 500px;
-background: url("../images/intro1.jpg") center no-repeat;
+	
+background:  center no-repeat;
     -webkit- background-size: cover;
-        background-size: cover;}
+        background-size: cover;
+	
+	}
 .tokenomics{
 width: 100%;
     max-width: 665px;
-    margin: 0 auto;
+   
     flex-direction: column;
     justify-content: center;
   	 	}
 
-.zone_tok {
-	flex-direction: column;
-	width: 904;
-	height: 122;
-	align-content: center;
-	justify-content: center;
-	color:#fff;
-	text-align: center;
-border-width: 3px;
-	 border-color: #ffa500!important;
-	 border: 5px solid #dee2e6!important;
-	background-color: #fff;
-	border-radius: 10px;
-	margin-bottom: 20px;
+.img_luck {
+	margin-left: -140px;
+	
+}
 	
 }
 .tok__title{
@@ -340,12 +482,6 @@ border-width: 3px;
 	margin: 1;
 	padding-top: 10px;
 	
-	color:#fff;
-	text-align: center;
-border-width: 3px;
-	 border-color: #ffa500!important;
-	 border: 5px solid #dee2e6!important;
-	background-color: #ffa500;
 	border-radius: 10px;
 }
 		
@@ -377,7 +513,7 @@ border-width: 3px;
     margin: 0 auto;
 	position: relative;
 	height: 832px;
-background: url("../images/intro1.jpg") center no-repeat;
+background:
     -webkit- background-size: cover;
         background-size: cover;}
 	
@@ -410,36 +546,44 @@ background: url("../images/intro1.jpg") center no-repeat;
 	padding-top: 0;
 	color:rgba(235, 61, 61, 1);
 	text-align: center;
+	margin-left: -120px;
 	
 	}
 .Text_HTB {
-	    color: rgba(235, 61, 61, 1);
-    font-size: 17px;
-    line-height: 2;
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
+	 background: #fff;
+	font-size: 30px;
+	font-family: 'Righteous', cursive;
+	-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: -30px;
+  
 	
 	
 }
 .link-warning text-break:focus{
   color:#ffc107		
 }
+.textHTB1{
+	margin-top: -50px;
+}
 
 .right1 {
+	display: flex;
 	width:50%; 
 	height: 100%;
 	float:right;
 	align-items: center;
+	justify-content: center;
 	
 }
 .container-5{
 	
     width: 1520;
 	height: 200px;
-	
-    margin: 0 auto;
+	margin-top: 180px;
+    
 	position: relative;
-	
+	background: ;
 
     -webkit- background-size: cover;
         background-size: cover;
@@ -464,7 +608,7 @@ background: url("../images/intro1.jpg") center no-repeat;
 	padding-top: 20px;
 	text-align: center;
 	font-size: 7px;
-	
+	color: #f8f9fa;
 }
 
 
@@ -485,4 +629,39 @@ width: 100hw;
 #mintBTN{
 
 	
+}
+.container-6{
+	width: 665px;
+    max-width: 1520;
+    margin: 0 auto;
+	position: relative;
+	
+background:  center no-repeat;
+    -webkit- background-size: cover;
+        background-size: cover;
+
+}
+.Safecontract{
+	width: 100%;
+    max-width: 665px;
+    flex-direction: column;
+    justify-content: left;
+}
+.safeintro{
+	margin-left: -55px;
+	margin-top: 50px;
+	margin-bottom: 35px;
+	
+}
+.Text_safe{
+	background: #fff;
+	font-size: 30px;
+	font-family: 'Righteous', cursive;
+	-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: -50px;
+  
+}
+.textsafe{
+	margin-top: -50px;
 }
