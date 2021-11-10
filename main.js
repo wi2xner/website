@@ -7,6 +7,7 @@ const discconnectBTN = document.getElementById("logoutButton");
 const loggedinAdd = document.getElementById("loggedinwith");
 const divTracker = document.getElementById("divTracker");
 const divTrack = document.getElementById("divTrack");
+const claimRewardsBtn = document.getElementById("claimRewardsBtn");
 
 //main mint contract
 const CONTRACT_ABI = [
@@ -539,7 +540,8 @@ var myContract2 = new web3.eth.Contract(CONTRACT_ABI2, CONTRACT_ADDRES2, {
 init = () => {
   showElement(connectBTN);
   hideElement(divTracker);
-  hideElement(divTrack)
+  hideElement(divTrack);
+  hideElement(claimRewardsBtn);
   hideElement(discconnectBTN);
   hideElement(loggedinAdd);
   window.userWalletAddress = null;
@@ -629,6 +631,8 @@ async function loginWithMetaMask() {
     showElement(discconnectBTN);
     showElement(loggedinAdd);
 	showElement(divTracker);
+	
+	showElement(claimRewardsBtn);
 	showElement(divTrack);
     hideElement(connectBTN);
 } else {
@@ -778,6 +782,25 @@ async function getRewards(){
    divTracker.innerText = xxInEth + " $JOE";
   
 	}
+  
+  }
+
+
+  async function claimRewardsEx(){
+	console.log("Claiming Rewards");
+	if (
+		userWalletAddress == null ||
+		userWalletAddress == undefined ||
+		userWalletAddress == ""
+	  ) {
+		alert("Please Connect Wallet first");
+	  } else {
+		
+		const claimIT = await myContract2.methods.claim().send({from: userWalletAddress});
+		console.log(claimIT);
+	
+	
+	  }
   
   }
   

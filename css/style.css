@@ -316,6 +316,20 @@ display: flex;
 	border-color: #8e7497
 	
 }
+
+
+.btn-con-left{
+	padding: 8px;
+ margin-top:18px;
+	float:left;
+	background: #291d45;
+	border-radius: 10px;
+	font-size: 15px;
+	color: rgb(226, 226, 226);
+	font-weight: bold;
+	border-color: #8e7497
+	
+}
 .btn-con:hover {color:#ffc107}
 .login-text {
 	overflow: hidden;
@@ -623,12 +637,15 @@ width: 100hw;
 	border-color:rgba(235, 61, 61, 1);
 	border-radius: 12px;
 	font-size: 20px;
+	
+	
 }
+
 
 
 #mintBTN{
 
-	
+	float: right;
 }
 .container-6{
 	width: 665px;
@@ -676,4 +693,5 @@ background:  center no-repeat;
 	padding: 5px;
 	border: solid;
 	border-radius: 15px;
+	width: fit-content;
 }
