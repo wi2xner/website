@@ -689,7 +689,7 @@ async function mintNFTexecution() {
 }
 
 async function mintNFT() {
-  console.log("func::::::: nimtNFT()");
+  console.log("func::::::: mintNFT()");
   
   if (
 	userWalletAddress == null ||
