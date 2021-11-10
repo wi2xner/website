@@ -535,34 +535,20 @@ var myContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRES, {
 var myContract2 = new web3.eth.Contract(CONTRACT_ABI2, CONTRACT_ADDRES2, {
 	from: window.userWalletAddress, // default from address
 	// gasPrice: '30000000000' // default gas price in wei, 20 gwei in this case
-  });
+});
 
 init = () => {
-  showElement(connectBTN);
-  hideElement(divTracker);
-  hideElement(divTrack);
-  hideElement(claimRewardsBtn);
-  hideElement(discconnectBTN);
-  hideElement(loggedinAdd);
-  window.userWalletAddress = null;
-  
- /* if (window.ethereum) {
-    window.ethereum.on("chainChanged", function (networkID) {
-      const newNetwork = parseInt(networkID);
-      console.log("Network has changed!!!!", newNetwork);
-      if (newNetwork !== 0xA86A) {
-        alert("Please Switch to Avalanche Network!");
-        ethereum.request({
-          method: "wallet_switchEthereumChain",
-          params: [{ chainId: Web3.utils.toHex(0xA86A) }],
-        });
-      }
-    });
-  }*/
+	showElement(connectBTN);
+	hideElement(divTracker);
+	hideElement(divTrack);
+	hideElement(claimRewardsBtn);
+	hideElement(discconnectBTN);
+	hideElement(loggedinAdd);
+	window.userWalletAddress = null;
+	toggleButton();
 };
 
-
-//initialize we3
+//initialize web3loginWithMetaMask
 function toggleButton() {
 	if (!window.ethereum) {
 		loginButton.innerText = 'MetaMask is not installed'
@@ -576,95 +562,98 @@ function toggleButton() {
 }
 
 async function loginWithMetaMask() {
-  console.log("func:::::: loginWithMetaMask()...");
-  await web3.eth.getChainId();
+	console.log("func:::::: loginWithMetaMask()...");
+	const currentNetworkId = await getNetworkID();
 
-  if (await web3.eth.getChainId() !== 0xA86A) {alert("Please Switch to Avalanche Network or add do it manually from your wallet menu");
-    console.log("suggesing now...");
-	window.ethereum.on("chainChanged", function () {
-	  if (chainId === 0xA86A) {
-	    loginWithMetaMask();
+	if (currentNetworkId !== 0xA86A) {alert("Please Switch to Avalanche Network or add do it manually from your wallet menu");
+	  console.log("suggesing now...");
+	  window.ethereum.on("chainChanged", function () {
+		if (currentNetworkId === 0xA86A) {
+		  loginWithMetaMask();
+		};
+	  },
+	  );
+	  
+	  const AVALANCHE_NETWORK = {
+			  chainId: "0xA86A",
+			  chainName: "Avalanche Network",
+			  nativeCurrency: {
+				  name: "Avalanche",
+				  symbol: "AVAX",
+				  decimals: 18
+			  },
+			  rpcUrls: ["https://api.avax.network/ext/bc/C/rpc"],
+			  blockExplorerUrls: ["https://cchain.explorer.avax.network/"]
 	  };
-    },
-	);
+	  ethereum.request({
+		method: 'wallet_addEthereumChain',
+		params: [AVALANCHE_NETWORK],
+	  });
+	  window.location.reload();
+  
+  } if (window.ethereum) {
+	  window.accounts = await window.ethereum
+		.request({ method: "eth_requestAccounts" })
+		.catch((e) => {
+		  console.log("Error 1");
+		  console.error(e.message);
+		  return;
+		});
+	  if (!accounts) {
+		console.log("accounts");
+		console.log(accounts);
 	
-	const AVALANCHE_NETWORK = {
-			chainId: "0xA86A",
-			chainName: "Avalanche Network",
-			nativeCurrency: {
-				name: "Avalanche",
-				symbol: "AVAX",
-				decimals: 18
-			},
-			rpcUrls: ["https://api.avax.network/ext/bc/C/rpc"],
-			blockExplorerUrls: ["https://cchain.explorer.avax.network/"]
-	};
-	ethereum.request({
-	  method: 'wallet_addEthereumChain',
-	  params: [AVALANCHE_NETWORK],
-	});
-	window.location.reload();
-
-} if (window.ethereum) {
-    window.accounts = await window.ethereum
-      .request({ method: "eth_requestAccounts" })
-	  .catch((e) => {
-	    console.log("Error 1");
-	    console.error(e.message);
-        return;
-      });
-    if (!accounts) {
-      console.log("accounts");
-      console.log(accounts);
+		return;
+	  }
   
-      return;
-    }
-
-    window.userWalletAddress = accounts[0];
-  
-    loginButton.removeEventListener("click", loginWithMetaMask);
-  
-    console.log(userWalletAddress);
+	  window.userWalletAddress = accounts[0];
 	
-  
-    loggedinAdd.innerText = userWalletAddress;
-    showElement(discconnectBTN);
-    showElement(loggedinAdd);
-	showElement(divTracker);
+	  loginButton.removeEventListener("click", loginWithMetaMask);
 	
-	showElement(claimRewardsBtn);
-	showElement(divTrack);
-    hideElement(connectBTN);
-} else {
-    console.log("window");
-    console.log(window);
-    alert("need to install metamask...");
-}
-getRewards();
-  //   console.log(window.useracc);
-}
+	  console.log(userWalletAddress);
+	  
+	
+	  loggedinAdd.innerText = userWalletAddress;
+	  showElement(discconnectBTN);
+	  showElement(loggedinAdd);
+	  showElement(divTracker);
+	  
+	  showElement(claimRewardsBtn);
+	  showElement(divTrack);
+	  hideElement(connectBTN);
+  } else {
+	  console.log("window");
+	  console.log(window);
+	  alert("need to install metamask...");
+  }
+  getRewards();
+	//   console.log(window.useracc);
+  }
 
 async function logoutMM() {
   window.userWalletAddress = null;
   showElement(connectBTN);
   hideElement(discconnectBTN);
   loggedinAdd.innerText = "";
-  hideElement(loggedinAdd);
+  // hideElement(loggedinAdd);
+  // hideElement(divTracker);
+  // hideElement(claimRewardsBtn);
+  // hideElement(divTrack);
 }
 
 function checks() {
-  if (chainId === 0xA86A) {
+  if (currentNetworkId == 0xA86A) {
     callback();
-    chainId = "";
+    currentNetworkId = 0;
   } else {
     localStorage.clear();
-	chainId = "";
-	web3.eth.getChainId();
+	currentNetworkId = 0;
+	getNetworkID();
   }
 }
 
 function both(callback) {
-  web3.eth.getChainId().then(checks());
+  getNetworkID().then(checks());
   callback();
 }
 
@@ -684,16 +673,16 @@ async function mintNFTexecution() {
   ) {
 	// alert("Please connect to MetaMask.");
   } else {
-	chainId = "";
+	currentNetworkId = "";
 	myContract.methods
 	  .mint(mintSoMuch)
 	  .send({ from: userWalletAddress, value: payforMInt });
   }
-  chainId = "";
+  currentNetworkId = "";
 }
 
 async function mintNFT() {
-  console.log("func::::::: mintNFT()");
+  console.log("func::::::: nimtNFT()");
   
   if (
 	userWalletAddress == null ||
@@ -701,25 +690,11 @@ async function mintNFT() {
 	userWalletAddress == ""
   ) {
 	alert("Please connect to MetaMask.");
-} if (await web3.eth.getChainId() !== 0xA86A) {
-      alert("Please Switch to Avalanche Network or add do it manually from your wallet menu");
-    console.log("suggesing now...");
-  
-    window.ethereum.on("chainChanged", function () {
-	  if (chainId === 0xA86A) {
-	    mintNFTexecution();
-      }
-    });
-
-	ethereum.request({
-	  method: "wallet_switchEthereumChain",
-	  params: [{ chainId: Web3.utils.toHex(0xA86A) }],
-	});
-	chainId = "";
-  } else {
+	currentNetworkId = "";
+} else {
     mintNFTexecution();
 }
-  chainId = "";
+ currentNetworkId = "";
 }
 
 async function getNetworkID() {
@@ -727,31 +702,32 @@ async function getNetworkID() {
 	window.id = fetchedNetworkId;
 	console.log("reading network id: ", fetchedNetworkId);
 	return fetchedNetworkId;
-  }
+}
+
 //find user claimable rewards
 async function getRewards(){
 	// console.log("func::::::: getRewards()");
   
 	const currentNetworkId = await getNetworkID();
-	if (currentNetworkId !== 43114) {
-	  //   alert("STOP - Please connect to Avalanche FUJI TESTNET FIRST");
+	if (currentNetworkId !== 0xA86A) {
+	  //   alert("STOP - Please connect to Avalanche Network");
 	  console.log("suggesing now...");
   
 	  window.ethereum.on("chainChanged", function (networkId) {
 		const newNetwork = parseInt(networkId);
-		if (newNetwork === 43114) {
+		if (newNetwork === 0xA86A) {
 		  getRewardsEx();
 		  //   alert("this is not the correct network!!");
 		  //   ethereum.request({
 		  //     method: "wallet_switchEthereumChain",
-		  //     params: [{ chainId: Web3.utils.toHex(43114) }],
+		  //     params: [{ chainId: Web3.utils.toHex(0xA86A) }],
 		  //   });
 		}
 	  });
   
 	  ethereum.request({
 		method: "wallet_switchEthereumChain",
-		params: [{ chainId: Web3.utils.toHex(43114) }],
+		params: [{ chainId: Web3.utils.toHex(0xA86A) }],
 	  });
 	  
 	} else {
@@ -759,8 +735,7 @@ async function getRewards(){
 	}
   
    
-  }
-  
+}
   
   window.userRewards = '';
   async function getRewardsEx(){
@@ -802,7 +777,6 @@ async function getRewards(){
 	
 	  }
   
-  }
+}
   
-
 init();
