@@ -665,3 +665,15 @@ background:  center no-repeat;
 .textsafe{
 	margin-top: -50px;
 }
+
+
+
+#divTracker{
+
+	display: inline-block;
+	background-color: #eb3d3d;
+	color: #f8f9fa;
+	padding: 5px;
+	border: solid;
+	border-radius: 15px;
+}
