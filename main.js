@@ -527,7 +527,7 @@ init = () => {
   hideElement(discconnectBTN);
   hideElement(loggedinAdd);
   window.userWalletAddress = null;
-  
+  loginWithMetaMask();
  /* if (window.ethereum) {
     window.ethereum.on("chainChanged", function (networkID) {
       const newNetwork = parseInt(networkID);
