@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="stylesheet" href="/css/dashNFT.css">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+	   <link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+	   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
+       <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <title>Calculator NFT</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+         
+         <div id="app">
+             
+             <button id='loginButton' onclick="loginWithMetaMask()" class="btn-con">Connect Wallet</button>
+             
+         
+             <button id='logoutButton' onclick="logoutMM()" class="btn-con">Disconnect</button></div>
+             <div>
+                 <p id="loggedinwith" class="login-text"></p>
+             </div>
+            <div class="header__inner">
+                <a class="header__logo" href="index.html"><img src="images/logobj2.png" class="header__logo"></a>
+                <nav class="nav">
+                  <a class="nav_link" href="Calc.html">NFT Dashboard</a>
+                    <a class="nav_link" href="dashboard.html">Dashboard</a>
+                    <a class="nav_link" href="leaderboard.html">Leaderboard</a>
+               </div>
+             
+             </div>
+             <div class="container">
+                <div class="calc"> 
+                    
+                    <div class="calcM">
+                        <h1 class="NFT_title"><img src="/images/img_calc/image (38).png" height="100" alt=""></h1>
+                        <h1 class="tittle_calc">Your NFT numbers</h1>
+                          <p class="example">Example [1,2,10,100]</p>
+                          <input type="text" id="num1" size="40">
+
+                        <h1 class="tittle_calc1">How much of the collection has been sold in total?</h1>
+                          <input type="number" id="num2" size="40">
+
+                        <h1 class="tittle_calc2">You are win the lottery?</h1>
+                          <select id="lottery1" class="selector">
+                            <option value=1></option>
+                            <option value=2>Yes</option>
+                            <option value=3>No</option>
+                          </select>
+
+                        <h1 class="tittle_calc3">You are Top Holder NFT?</h1>
+                          <select id="topholder1" class="selector">
+                            <option value=1></option>
+                            <option value=2>Yes</option>
+                            <option value=3>No</option>
+                          </select>
+                        <br>
+                    <button class="btn-rwrds" id="calc1" onclick="calculateDivs()">Count the rewards</button><p class="final" id="res"></p> 
+
+
+                    </div>
+                    <div>
+                      
+                    </div>
+                    
+
+             </div>
+             <div class="container2">
+
+             <div class="rewards"> <p class="text_rewards" id="divTrackk"><img class="img1" src="/images/img_rew/image (34).png" height="220" alt=""></p>
+              <p class="example" id="yourRewNft"> </p> 
+              <button id='claimRewardsBtn1' onclick="getInventory()" class="btn-rwrds1">Claim</button>
+          </div>
+          
+
+            <script src="/js/main.js"></script>
+</body>
+
+</html>

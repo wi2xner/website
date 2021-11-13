@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel=stylesheet href="css/leaderboard.css">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+	   <link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+	   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
+       <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <title>Baby Trader Joe</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+         
+         <div id="app">
+             
+             <button id='loginButton' onclick="loginWithMetaMask()" class="btn-con">Connect Wallet</button>
+             
+         
+             <button id='logoutButton' onclick="logoutMM()" class="btn-con">Disconnect</button></div>
+             <div>
+                 <p id="loggedinwith" class="login-text"></p>
+             </div>
+            <div class="header__inner">
+                <a class="header__logo" href="index.html"><img src="images/logobj2.png" class="header__logo"></a>
+                <nav class="nav">
+                  <a class="nav_link" href="Calc.html">NFT Dashboard</a>
+                    <a class="nav_link" href="dashboard.html">Dashboard</a>
+                    <a class="nav_link" href="leaderboard.html">Leaderboard</a>
+               </div>
+               <div class="container3">
+                <div class="rewards"> 
+                  <p class="text_rewards"><img class="img1" src="/images/img_rew/image (40).png" height="210" alt=""></p>
+                  
+                  <p class="text_rewards"> </p> 
+                  <div class="text1">
+                    
+                  <p class="holdertext">If you are a Top Holder, you can pick up your reward after the entire collection is over!</p>
+                  <div class="border"> <p class="holdertext">The Top Holder at the moment:<p class="adress" id="adresstop"></p></p>
+                 <p class="Hold" id="TopHold"> </p> </div>
+                </div>
+                 <button id='claimTopHold' onclick="claimRewTopHold()" class="btn-rwrds2">Claim</button>
+                </div>
+             </div>
+             
+                </div>
+              </div>
+              <div class="container4">
+                <div class="rewards"> <p class="" id=""><img class="img1" src="/images/img_rew/image (41).png" height="220" alt=""></p>
+                  
+                  <div class="Collection">
+                    
+                    <h1 class="NFT_tittle"> BJOE NFT (<p class="Hold" id="yournft"> </p>)</h1>
+                    <h1 class="textS">In order to see your NTF in your wallet, you need to add a contract to metamask: <br>
+                      "0x666B92C08BfA82f245aC16F78A45D1c403f9506f"
+                      <br>  Decimals: 0</h1>
+                    <p>*here your NFT*</p>
+                  </div>
+               <script src="/js/main.js"></script>
+               
+</body>
+</html>

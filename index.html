@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -15,9 +13,8 @@
 <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 	   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-       
-
- 
+	   
+        
       <title>BabyTraderJoe</title>
    </head>
 
@@ -25,6 +22,7 @@
        
        <header class="header">
        <div class="container">
+		
 		<div id="app">
 			
 			<button id='loginButton' onclick="loginWithMetaMask()" class="btn-con">Connect Wallet</button>
@@ -36,17 +34,15 @@
 			</div>
 		   <div class="header__inner">
 			   <a class="header__logo" href="index.html"><img src="images/logobj2.png" class="header__logo"></a>
-			  </div><p id="divTrack">Your claimable dividends:</p><p id="divTracker"></p> <button id='claimRewardsBtn' onclick="claimRewardsEx()" class="btn-con-left">Claim</button></div>
-			 
-			  <!-- <nav class="nav">
-				   <a class="nav_link" href="index.html">Home</a>
-				   <a class="nav_link" href="#abouts_us">About us</a>
-				   <a class="nav_link" href="#tokenomics">Tokenomics</a>
-                   <a class="nav_link" href="#HTB">How to Buy</a>
-
-				   </nav>-->
+			   <nav class="nav">
+				   <a class="nav_link" href="Calc.html">NFT Dashboard</a>
+			   	<a class="nav_link" href="dashboard.html">Dashboard</a>
+				   
+				   <a class="nav_link" href="leaderboard.html">Leaderboard</a>
+			  </div><div class="sss"><p id="divTrack">Your claimable dividends:</p><p id="divTracker"></p> <button id='claimRewardsBtn' onclick="claimRewardsEx()" class="btn-con-left">Claim</button></div></div>
+			
+			</div>
 			   
-			   </div>
 		   </div>
 		   
          
@@ -62,8 +58,8 @@
 	
 			   </div>
 			 
-		   <h1 class="intro_title"><img src="/images/image (5).png" width="650"  alt=""></h1>
-			    <h2 class="intro_text"><img src="/images/image (23).png"  height="300" alt=""></h2>
+		   <h1 class="intro_title"><img src="/images/image (35).png" width="650"  alt=""></h1>
+			    <h2 class="intro_text"><img src="/images/image (37).png"  height="300" alt=""></h2>
        </div><div class="intro_content"-w100>
 		   
 		   		<div id="mintDiv"><h2 class="intro_NFT"><img src="/images/image (24).png" height="350px" alt=""></h2>
@@ -71,7 +67,7 @@
 		   </div> 
 		   
 		   <img class = "gif"preload="auto" loop autoplay src = "images/NFT.gif" width="270" height="270" class= "NFT_vid" ></img>  
- 
+            
 
 		
  
@@ -89,13 +85,14 @@
 		 <option value=10>10</option>
 		 </select>
 		<button class="btn_nft" onclick="mintNFT()" style="width: 250px;">Mint NFT</button>
+		<div class="int_nft1"><p class="text_nft">During the launch,  <strong class="bold">20% $AVAX</strong> of every minting fee is given back to existing Baby Trader Joe holders.</div>
+		</p>
 	 </div> 
 	 
 </div>
 
 <div class="int_nft1">
-	<p class="text_nft">As soon as you have minted the NFT, you will get <strong class="bold">20%</strong> from each subsequent person who makes a mint. Be the first and after 100 mints of NFT you will receive 2 AVAX reward to your account
-	</p>
+	
 	
 </div>
 	   
@@ -105,40 +102,38 @@
 		   
 		 
        </div>
-	   <div class="container-2">	
-	   <div class="abouts_us" id="abouts_us">
+	   <div class= "container-6">
+		<div class=Safecontract>
+			<img class="safeintro" src="/images/image (22).png" height="140" alt="">
+			<div class="textsafe">
+			<br> <p class="Text_safe">The contract is written in a such  way that as soon as the full NFT collection is sold,</p>
+				<br> <p class="Text_safe">the holder with a maximum NFTs at the moment will get an access to a separate repository,</p>
+				<br> <p class="Text_safe">where 200 AVAX are safely stored and could be transferred to his wallet!</p>
+				<br> <p class="Text_safe">And also there is protection against the same amount of NTF. All for the community.</p></div>
 	   
-
-		   
-		 
-
-		     <h1 class="tittle_ab"><img src="/images/image (25).png" height="300" alt=""></h1>
-	<p class="text12"> The top holder of NFTs will get 20% of the total bank of NFTs sold
-	<br>	Yes, you read it correctly!
-	<br>500 NFT * 2 AVAX = 1000 AVAX * 20% = 200 AVAX to the wallet of the top holder of the NFT.</p>
-		
+	 <div class= "container-6">
+		<div class=Safecontract>
+			<img class="safeintro" src="/images/image (25).png" height="120" alt="">
+			<div class="textsafe">
+			<br> <p class="Text_safe">The top holder of NFTs will get 20% of the total bank of NFTs sold </p>
+				<br> <p class="Text_safe">Yes, you read it correctly!</p>
+				
+				<br> <p class="Text_safe"> 500 NFT * 2 AVAX = 1000 AVAX * 20% = 200 AVAX to the wallet of the top holder of the NFT.</p></div>
 	
 	   
 		
 </div>
 	 </div>
-	 <div class= "container-6">
-		 <div class=Safecontract>
-			 <img class="safeintro" src="/images/image (22).png" height="270" alt="">
-			 <div class="textsafe">
-			 <br> <p class="Text_safe">The contract is written in a such  way that as soon as the full NFT collection is sold,</p>
-				 <br> <p class="Text_safe">the holder with a maximum NFTs at the moment will get an access to a separate repository,</p>
-				 <br> <p class="Text_safe">where 200 AVAX are safely stored and could be transferred to his wallet!</p>
-				 <br> <p class="Text_safe">And also there is protection against the same amount of NTF. All for the community.</p></div>
+	 
 
 		 </div>
 		 
 	 </div>
 	   <div class= "container-3">
 	   <div class="tokenomics"id="tokenomics"> 
-		   <img class="img_luck" src="/images/image (28).png" height="320" alt="">
-		   <p class="text12"> Buy a BJOE for 1 AVAX and get a chance to win 10 AVAX!
-		<br>10 winners will be randomly selected from all the BJOE holders! </p>
+		   <img class="img_luck" src="/images/image (39).png" height="110" alt="">
+		   <p class="text12"> Buy and Hold $BJOE more one billion tokens and get a chance to win 100 AVAX!
+		<br>1 winner will be randomly selected from all the BJOE holders! </p>
 		   		  
 	   </div>
 	   <div class="intro_btn">
@@ -154,7 +149,7 @@
 	   <div class= "container-4">
 		   <div class="How_to_buy" id="HTB">
 			   <div class="left1">
-			  <img class= "tittle_HTB" src="/images/image (17).png" height="250">
+			  <img class= "tittle_HTB" src="/images/image (17).png" height="300">
 				<div class= "textHTB1"> <p class="Text_HTB">And of course we don't forget about our wonderful community.</p>
 					<br> <p class="Text_HTB">10% of the money collected from the sale of NFT will go to buyback the $BJOE token.</p>
 				 <br> <p class="Text_HTB">-	20 AVAX first buyback</p>
@@ -172,7 +167,7 @@
 			   </div>
 	   <div class="container-5">
 	   <div class="Links">
-		  <a href="https://t.me/TraderJoebaby" class="Telegram">
+		  <a href="https://t.me/TraderJoebaby_chat" class="Telegram">
 						<img src="images/telegram.png" alt="tw" width="45" height="45"></a> 
 		   <a href="https://twitter.com/BabyTraderJoe" class="Twitter">
 						<img src="images/twitter.png" alt="tw" width="45" height="45"></a> 
@@ -192,6 +187,6 @@
 		   </div>
 		   
 	   </div>
-	   <script type='text/javascript'  src="./main.js"></script>
+	   <script type='text/javascript'  src="/js/main.js"></script>
    </body>
 </html>

@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+html {
+	background: url("/images/bak22.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+body { 
+    margin: 0;
+    font-family: 'Poppins', sans-serif;	
+    font-size: 15px;
+    line-height: 1.6;
+    color: white;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  
+  background-size: 100%;
+}
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+h1, h2, h3, h4 h5, h6{ 
+margin: 0
+}
+/*container*/
+.container {
+    
+    width: 100%;
+    max-width: 1520;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: inline-block;
+	position:relative;
+    justify-content: center;
+    text-align: center;
+	
+    
+}
+.calc{
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px;
+    
+    
+}
+.calcM{
+    font-family:'Righteous', cursive;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.tittle_calc{
+    
+    font-size: 40px;
+    
+}
+.example{
+    font-size: 25px;
+}
+.tittle_calc1{
+    font-size: 40px;
+    padding: 15px;
+}
+.tittle_calc2 {
+    font-size: 40px;
+}
+.tittle_calc3 {
+    font-size: 40px;
+}
+.selector{
+    margin-left: -18px;
+    font-size: 19px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+input[type="text"] {
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 19px;
+    
+ }
+ input[type="number"] {
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 19px;
+    text-align: center;
+ }
+ .btn-rwrds {
+        display: inline-block;
+        vertical-align: top;
+        
+        font-weight: bold;
+        padding: 15px 20px;
+        font-size: 20px;
+        color: rgb(226, 226, 226);
+        text-decoration: none;
+        transition: color .2s linear;
+        font-weight: 700;
+        background: #291d45;
+        border-color: #8e7497;
+        border-radius: 10px;
+        margin-top: 20px;
+
+        
+        
+    }
+    .btn-rwrds:hover{background:#ffa500;
+    }
+    .final{
+        font-family:'Righteous', cursive;
+        font-size: 30px;
+    }
+    .btn-rwrds1 {
+        display: inline-block;
+        vertical-align: top;
+        
+        font-weight: bold;
+        padding: 15px 20px;
+        font-size: 20px;
+        color: rgb(226, 226, 226);
+        text-decoration: none;
+        transition: color .2s linear;
+        font-weight: 700;
+        background: #291d45;
+        border-color: #8e7497;
+        border-radius: 10px;
+        margin-top: -40px;
+       
+    }
+    .btn-rwrds1:hover{background:#ffa500;}
+    .btn-rwrds2 {
+        display: inline-block;
+        vertical-align: top;
+        
+        font-weight: bold;
+        padding: 15px 20px;
+        font-size: 20px;
+        color: rgb(226, 226, 226);
+        text-decoration: none;
+        transition: color .2s linear;
+        font-weight: 700;
+        background: #291d45;
+        border-color: #8e7497;
+        border-radius: 10px;
+        margin-top: 20px;
+       
+    }
+    .btn-rwrds2:hover{background:#ffa500;}
+    
+    
+.header__inner{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header__logo{
+
+	width: 150px;
+	vertical-align: middle;}
+
+    .nav {
+        font-size: 15px;
+        text-transform: uppercase;
+        flex-direction: row;
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        margin-top: 5px;
+        
+    }
+    .nav_link {
+        display: inline-block;
+        vertical-align: top;
+        margin: 10px;
+        font-weight: bold;
+        padding: 10px 10px;
+        font-size: 17px;
+        color:#fff;
+        text-decoration: none;
+            transition: color .2s linear;
+        
+    }
+    .nav_link:hover {
+        color:#ffa500;
+        ;
+    }
+    .btn-con{
+        padding: 8px;
+     margin-top:18px;
+        float:right;
+        background: #291d45;
+        border-radius: 10px;
+        font-size: 15px;
+        color: rgb(226, 226, 226);
+        font-weight: bold;
+        border-color: #8e7497
+        
+    }
+    .btn-con:hover {color:#ffc107}
+    .login-text {
+        overflow: hidden;
+        float:right;
+        margin-top: 24px;
+        margin-right: 50px;
+        text-align: center;
+        text-overflow: ellipsis;
+        width: 150px;
+        background-color: #291d4566;
+        border-radius: 10px;
+        padding: 3px;
+        color: rgb(255, 255, 255);
+        border-color: #eb3d3d;}
+
+        .container2{
+            width: 100%;
+           height: 650px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: inline-block;
+	        position:relative;
+            justify-content: center;
+            text-align: center;
+        }
+        .container3{
+            font-family:'Righteous', cursive;
+            width: 100%;
+           height: 650px;
+            margin-top: -200px;
+        }
+
+        .rewards {
+            width: 100%;
+
+    display: grid;
+    margin-right: 250px;
+    text-align: center;
+    color: #fff;
+    justify-items: center;
+
+        }
+        .holdertext{
+            font-size: 30px;
+        }
+        .text1{
+            font-size: 40px;
+            margin-top: -55px;
+        }
+        .Collection{
+            
+
+        }
+        .NFT_tittle{
+            font-size: 50px;
+            
+            margin-top: -35px;
+            }
+            .textS{
+                font-size: 10px;
+            }
