@@ -5,7 +5,8 @@ const connectBTN = document.getElementById("loginButton");
 const discconnectBTN = document.getElementById("logoutButton");
 const loggedinAdd = document.getElementById("loggedinwith");
 
-//Mint contract
+
+//Mint Contract
 const CONTRACT_ABI = [{
     "inputs": [{
         "internalType": "uint256",
@@ -698,7 +699,7 @@ var myContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRES, {
     from: window.userWalletAddress // default from address
     // gasPrice: '30000000000' // default gas price in wei, 20 gwei in this case
 });
-
+ 
 init = () => {
     showElement(connectBTN);
     hideElement(discconnectBTN);
@@ -706,6 +707,7 @@ init = () => {
     window.userWalletAddress = null;
     toggleButton();
     loginWithMetaMask();
+
 };
 
   //////////////////////////////////////
@@ -725,18 +727,19 @@ async function loginWithMetaMask() {
     const currentNetworkId = await getNetworkID();
     console.log(currentNetworkId);
 
-    if (currentNetworkId !== 0xA869) {
-        alert("Please Switch to Avalanche Fuji Testnet or add do it manually from your wallet menu");
+    if (currentNetworkId !== 0xA86A) {
+        alert("Please Switch to Avalanche Network or add do it manually from your wallet menu");
+
         window.ethereum.on("chainChanged", function (networkId) {
             const newNetwork = parseInt(networkId);
-            if (newNetwork === 0xA869) {
+            if (newNetwork === 0xA86A) {
                 loginWithMetaMask();
             }
         });
 
-        const AVALANCHE_FUJI = {
-            chainId: "0xA869",
-            chainName: "Avalanche Fuji Testnet",
+        const AVALANCHE_NETWORK = {
+            chainId: "0xA86A",
+            chainName: "Avalanche Network",
             nativeCurrency: {
                 name: "Avalanche",
                 symbol: "AVAX",
@@ -747,7 +750,7 @@ async function loginWithMetaMask() {
         };
         ethereum.request({
             method: "wallet_addEthereumChain",
-            params: [AVALANCHE_FUJI],
+            params: [AVALANCHE_NETWORK],
         });
         window.location.reload();
     } if (window.ethereum) {
@@ -759,18 +762,20 @@ async function loginWithMetaMask() {
                 return;
             });
         if (!accounts) {
+
             return;
         }
-
         window.userWalletAddress = accounts[0];
-        console.log(userWalletAddress);
+        console.log(window.userWalletAddress);
+        getTotalRefs();
         loggedinAdd.innerText = userWalletAddress;
         hideElement(connectBTN);
         showElement(discconnectBTN);
         showElement(loggedinAdd);
+        showElement(yourRewNft);
     } else {
         alert("need to install metamask...");
-    }
+    } 
 }
 
 async function logoutMM() {
@@ -780,10 +785,11 @@ async function logoutMM() {
     hideElement(discconnectBTN);
     loggedinAdd.innerText = "";
     hideElement(loggedinAdd);
+    hideElement(yourRewNft);
 }
 
 function checks() {
-    if (chainId == 0xA869) {
+    if (chainId == 0xA86A) {
         callback();
         chainId = 0;
     } else {
@@ -805,36 +811,79 @@ async function getNetworkID() {
     return fetchedNetworkId;
 }
 
-async function mintNFTexecution() {
-    var mintAMT = document.getElementById("dropdownMintAmt");
-    var mintSoMuch = mintAMT.options[mintAMT.selectedIndex].value;
-    var payforMInt = mintSoMuch * 2 * 1000000000000000000;
+  //////////
+ ///CALC///
+//////////
+async function calculateDivs() {
+    console.log("Calculation");
+    const arrayOfIDs = document.getElementById("num1").value.split(',');
+    const minted = Number(document.getElementById("num2").value);
+    const lottery = document.getElementById("lottery1").value == 2 ? 1 : 0;
 
+    const topholder = document.getElementById("topholder1").value == 2 ? 1 : 0;
+
+    const nftCost = 2;
+    let totalDivs = 0;
+    arrayOfIDs.forEach((ID) => {
+        let totalMinted = minted - ID;
+        let holders = ID;
+        for (let x = totalMinted; x > 0; x--) {
+            totalDivs += ((nftCost * 0.2)) / holders;
+            holders++;
+        }
+    });
+    lottery ? totalDivs += 100 : totalDivs += 0
+    topholder ? totalDivs += 200 : totalDivs += 0
+
+    console.log(totalDivs + " AVAX");
+
+    res.innerText = totalDivs + " AVAX";
+}
+
+  ////////////////////
+ ///REFLECTION NFT///
+////////////////////
+async function getBalanceID() {
+    const balid = await myContract.methods.balanceOf(userWalletAddress).call({ from: userWalletAddress });
+    return balid
+}
+
+async function tokenOfOwnerByInd(id) {
+    const tokenind = await myContract.methods.tokenOfOwnerByIndex(userWalletAddress, id).call({ from: userWalletAddress });
+    return tokenind
+};
+
+async function getReflectionBal(id) {
+    const refbal = await myContract.methods.getReflectionBalance(id).call({ from: userWalletAddress });
+    return refbal
+}
+
+async function getTotalRefs() {
+    const NFTCount = await getBalanceID();
+    let NFTIDS = []
+    for (let i = 0; i < NFTCount; i++) {
+        let a = await tokenOfOwnerByInd(i)
+        NFTIDS.push(+a)
+    };
+
+    const arrayOfRefs = await Promise.all(NFTIDS.map(async a => await getReflectionBal(a)))
+    const totalReflections = arrayOfRefs.reduce((prev, cur) => +prev + +cur) / 1000000000000000000
+    yourRewNft.innerText = totalReflections;
+
+    return totalReflections
+}
+
+async function claimRewNFT() {
     if (
         userWalletAddress == null ||
         userWalletAddress == undefined ||
         userWalletAddress == ""
     ) {
-        // alert("Please connect to MetaMask.");
+        alert("Please connect to MetaMask");
     } else {
-        chainId = "";
-        myContract.methods.mint(mintSoMuch).send({ from: userWalletAddress, value: payforMInt });
-    }
-    chainId = "";
-}
-
-async function mintNFT() {
-    console.log("Mint NFT");
-
-    if (
-        userWalletAddress == null ||
-        userWalletAddress == undefined ||
-        userWalletAddress == ""
-    ) {
-        alert("Please connect to MetaMask.");
-    } else {
-        mintNFTexecution();
+    console.log("Claim Reward NFT");
+    const claimRew = await myContract.methods.claimRewards().send({ from: userWalletAddress });
     }
 }
-
+   
 init();

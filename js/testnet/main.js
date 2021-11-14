@@ -725,18 +725,18 @@ async function loginWithMetaMask() {
     const currentNetworkId = await getNetworkID();
     console.log(currentNetworkId);
 
-    if (currentNetworkId !== 0xA869) {
-        alert("Please Switch to Avalanche Fuji Testnet or add do it manually from your wallet menu");
+    if (currentNetworkId !== 0xA86A) {
+        alert("Please Switch to Avalanche Network or add do it manually from your wallet menu");
         window.ethereum.on("chainChanged", function (networkId) {
             const newNetwork = parseInt(networkId);
-            if (newNetwork === 0xA869) {
+            if (newNetwork === 0xA86A) {
                 loginWithMetaMask();
             }
         });
 
-        const AVALANCHE_FUJI = {
-            chainId: "0xA869",
-            chainName: "Avalanche Fuji Testnet",
+        const AVALANCHE_NETWORK = {
+            chainId: "0xA86A",
+            chainName: "Avalanche Network",
             nativeCurrency: {
                 name: "Avalanche",
                 symbol: "AVAX",
@@ -747,7 +747,7 @@ async function loginWithMetaMask() {
         };
         ethereum.request({
             method: "wallet_addEthereumChain",
-            params: [AVALANCHE_FUJI],
+            params: [AVALANCHE_NETWORK],
         });
         window.location.reload();
     } if (window.ethereum) {
@@ -783,7 +783,7 @@ async function logoutMM() {
 }
 
 function checks() {
-    if (chainId == 0xA869) {
+    if (chainId == 0xA86A) {
         callback();
         chainId = 0;
     } else {
@@ -805,6 +805,9 @@ async function getNetworkID() {
     return fetchedNetworkId;
 }
 
+  //////////
+ ///Mint///
+//////////
 async function mintNFTexecution() {
     var mintAMT = document.getElementById("dropdownMintAmt");
     var mintSoMuch = mintAMT.options[mintAMT.selectedIndex].value;

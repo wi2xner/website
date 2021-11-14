@@ -4,6 +4,7 @@ showElement = (element) => element.style.display = "block";
 const connectBTN = document.getElementById("loginButton");
 const discconnectBTN = document.getElementById("logoutButton");
 const loggedinAdd = document.getElementById("loggedinwith");
+const claimTopHold = document.getElementById("claimTopHold");
 
 //Mint contract
 const CONTRACT_ABI = [{
@@ -698,7 +699,7 @@ var myContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRES, {
     from: window.userWalletAddress // default from address
     // gasPrice: '30000000000' // default gas price in wei, 20 gwei in this case
 });
-
+ 
 init = () => {
     showElement(connectBTN);
     hideElement(discconnectBTN);
@@ -706,6 +707,7 @@ init = () => {
     window.userWalletAddress = null;
     toggleButton();
     loginWithMetaMask();
+
 };
 
   //////////////////////////////////////
@@ -754,7 +756,6 @@ async function loginWithMetaMask() {
         window.accounts = await window.ethereum
             .request({ method: "eth_requestAccounts" })
             .catch((e) => {
-
                 console.error(e.message);
                 return;
             });
@@ -764,10 +765,15 @@ async function loginWithMetaMask() {
 
         window.userWalletAddress = accounts[0];
         console.log(userWalletAddress);
+        getTopHoldadress();
+
         loggedinAdd.innerText = userWalletAddress;
         hideElement(connectBTN);
         showElement(discconnectBTN);
         showElement(loggedinAdd);
+        showElement(AddressTop);
+        showElement(BalanceTop);
+        showElement(nftbalance);
     } else {
         alert("need to install metamask...");
     }
@@ -780,6 +786,9 @@ async function logoutMM() {
     hideElement(discconnectBTN);
     loggedinAdd.innerText = "";
     hideElement(loggedinAdd);
+    hideElement(AddressTop);
+    hideElement(BalanceTop);
+    hideElement(nftbalance);
 }
 
 function checks() {
@@ -805,36 +814,80 @@ async function getNetworkID() {
     return fetchedNetworkId;
 }
 
-async function mintNFTexecution() {
-    var mintAMT = document.getElementById("dropdownMintAmt");
-    var mintSoMuch = mintAMT.options[mintAMT.selectedIndex].value;
-    var payforMInt = mintSoMuch * 2 * 1000000000000000000;
 
-    if (
-        userWalletAddress == null ||
-        userWalletAddress == undefined ||
-        userWalletAddress == ""
-    ) {
-        // alert("Please connect to MetaMask.");
-    } else {
-        chainId = "";
-        myContract.methods.mint(mintSoMuch).send({ from: userWalletAddress, value: payforMInt });
-    }
-    chainId = "";
+  /////////////////
+ ///LEADERBOARD///
+/////////////////
+
+window.userRewards = '';
+async function getTopHoldadress() {
+    const topaddress = await myContract.methods.topHolder().call({ from: userWalletAddress });
+    const gtopaddr = (topaddress[0]);
+    AddressTop.innerText = gtopaddr;
+    getTopHoldBalance();
 }
 
-async function mintNFT() {
-    console.log("Mint NFT");
+async function getTopHoldBalance() {
+    const topbalance = await myContract.methods.topHolder().call({ from: userWalletAddress });
+    const gtopbal = (topbalance[1]);
+    BalanceTop.innerText = "$BJOE NFT: " + gtopbal;
+    getBalanceID();
+}
 
+async function claimRewTopHold() {
+    console.log("Claim treasure");
     if (
         userWalletAddress == null ||
         userWalletAddress == undefined ||
         userWalletAddress == ""
     ) {
-        alert("Please connect to MetaMask.");
+        alert("Please connect to MetaMask");
+    } if (userWalletAddress !== getTopHoldadress()) {
+        claimTopHold.innerText = 'You are not Top Holder'
+        loginButton.classList.remove('bg-purple-500', 'text-white')
+        loginButton.classList.add('bg-gray-500', 'text-gray-100', 'cursor-not-allowed')
+        console.log("You are not Top Holder");
+        return false
     } else {
-        mintNFTexecution();
+        const claimRew = await myContract.methods.withdrawTopHolder().send({ from: userWalletAddress });
+        console.log("Success");
     }
+}
+
+  ///////////////
+ ///INVENTORY///
+///////////////
+
+async function getBalanceID() {
+    const balid = await myContract.methods.balanceOf(userWalletAddress).call({ from: userWalletAddress });
+    nftbalance.innerText = balid;
+    return balid
+}
+
+async function tokenOfOwnerByInd(id) {
+    const tokenind = await myContract.methods.tokenOfOwnerByIndex(userWalletAddress, id).call({ from: userWalletAddress });
+    return tokenind
+};
+
+async function getReflectionBal(id) {
+    const refbal = await myContract.methods.getReflectionBalance(id).call({ from: userWalletAddress });
+    return refbal
+}
+
+async function getInventory() {
+    const NFTCount = await getBalanceID();
+    let NFTIDS = []
+    for (let i = 0; i < NFTCount; i++) {
+        let a = await tokenOfOwnerByInd(i)
+        NFTIDS.push(+a)
+    }
+
+    const arrayOfURL = await Promise.all(NFTIDS.map(async a => await myContract.methods.tokenURI(a).call({ from: userWalletAddress })));
+    const jsonURLS = arrayOfURL.map(a => 'https://gateway.pinata.cloud/ipfs/' + a.slice(7))
+    const nftObj = await Promise.all(jsonURLS.map(a => fetch(a).then(res => res.json())))
+    const imageURLS = nftObj.map(a => a.image)
+    console.log(imageURLS);
+    // returns an array of image urls
 }
 
 init();
